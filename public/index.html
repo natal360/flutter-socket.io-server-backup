@@ -21,11 +21,23 @@
       console.log('No connect server');
     });
 
+    // ブラウザ更新ディフォルト値
     socket.emit('mensaje',{ nombre: 'Fernando' });
 
-    // server からのデータを受け取る admin
-    socket.on('mensaje', function(payload){
-      console.log('Escuhando:', payload );
+    //　バックアップ
+    // // server からのデータを受け取る admin
+    // socket.on('nuevo-mensaje', function(payload){
+    //   console.log('Escuhando:', payload );
+    // });
+
+    // socket からのデータを受け取る
+    socket.on('HTML表示', function(payload){
+      console.log('結果:', payload );
+    });
+
+    socket.on('active-bands', function( bands ){
+      console.clear();  // ブラウザのコンソールクリア
+      console.table( bands ); // テーブルで表示する
     });
 
   </script>
